@@ -1,3 +1,4 @@
+# pylint: disable=import-outside-toplevel
 """ Metodo de fabrica """
 
 from flask import Flask
@@ -6,9 +7,6 @@ from flask import Flask
 def init_app():
     """Contruindo o app"""
     app = Flask(__name__)
-
-    # Configuração do app
-    app.secret_key = "vitorvitoriaeyaramariaauvesdacosta"
 
     # Database
     from .database import DBConnectionHendler
@@ -21,12 +19,10 @@ def init_app():
 
         # Aplicativo de autenticação
         from .blueprints import auth_app
-
         app.register_blueprint(auth_app)
 
         # Aplicativo dos equipamentos
         from .blueprints import equipamentos_app
-
         app.register_blueprint(equipamentos_app)
 
         # Aplicativo de configuração dos clientes
@@ -36,7 +32,6 @@ def init_app():
 
         # Aplicativo de configuração das instalação
         from .blueprints import operacoes_app
-
         app.register_blueprint(operacoes_app)
 
         # Criando a enginer
